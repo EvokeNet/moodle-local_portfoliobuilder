@@ -46,10 +46,10 @@ function local_portfoliobuilder_before_standard_html_head() {
         ';
 
         $header .= '
-            <meta property="twitter:card"          content="summary_large_image" />
-            <meta property="twitter:title"         content="My portfolio on evoke" />
-            <meta property="twitter:description"   content="This is my portfolio on evoke site." />
-            <meta property="twitter:image"         content="'.$ogimage->out().'" />
+            <meta name="twitter:card"          content="summary_large_image" />
+            <meta name="twitter:title"         content="My portfolio on evoke" />
+            <meta name="twitter:description"   content="This is my portfolio on evoke site." />
+            <meta name="twitter:image"         content="'.$ogimage->out().'" />
         ';
 
         return $header;
