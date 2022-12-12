@@ -23,7 +23,7 @@
  */
 
 function local_portfoliobuilder_before_standard_html_head() {
-    global $PAGE, $USER;
+    global $PAGE, $CFG;
 
     if ($PAGE->pagetype == 'local-portfoliobuilder-index') {
         $id = required_param('id', PARAM_INT);
@@ -34,11 +34,22 @@ function local_portfoliobuilder_before_standard_html_head() {
         $ogimage = new \moodle_url('/mod/portfoliobuilder/pix/og_image.png');
 
         $header = '
+            <meta name="description"          content="This is my portfolio on evoke site." />
+        ';
+
+        $header .= '
             <meta property="og:url"           content="'.$publicurl->out(false).'" />
             <meta property="og:type"          content="website" />
             <meta property="og:title"         content="My portfolio on evoke" />
             <meta property="og:description"   content="This is my portfolio on evoke site." />
             <meta property="og:image"         content="'.$ogimage->out().'" />
+        ';
+
+        $header .= '
+            <meta property="twitter:card"          content="summary_large_image" />
+            <meta property="twitter:title"         content="My portfolio on evoke" />
+            <meta property="twitter:description"   content="This is my portfolio on evoke site." />
+            <meta property="twitter:image"         content="'.$ogimage->out().'" />
         ';
 
         return $header;
