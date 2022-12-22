@@ -26,11 +26,26 @@ class index implements renderable, templatable {
     }
 
     public function export_for_template(renderer_base $output) {
+        global $USER;
+
+        $isloggedin = isloggedin();
+
         $userutil = new user();
         $data = [
             'userfullname' => fullname($this->user),
-            'userimage' => $userutil->get_user_image_or_avatar($this->user)
+            'userimage' => $userutil->get_user_image_or_avatar($this->user),
+            'courseid' => $this->course->id,
+            'isloggedin' => $isloggedin
         ];
+
+        $userdata = [];
+        if ($isloggedin) {
+            $userdata = [
+                'id' => $USER->id,
+                'fullname' => fullname($USER),
+                'picture' => $userutil->get_user_image_or_avatar($USER)
+            ];
+        }
 
         $entryutil = new entry();
         $entries = $entryutil->get_user_course_entries($this->course->id, $this->user->id);
@@ -40,7 +55,8 @@ class index implements renderable, templatable {
         $layoututil = new \mod_portfoliobuilder\util\layout();
         $layout = $layoututil->get_user_layout($this->course->id, $this->user->id);
 
-        $data['entries'] = $output->render_from_template("mod_portfoliobuilder/layouts/{$layout}/card", ['entries' => $entries]);
+        $data['entries'] = $output->render_from_template("mod_portfoliobuilder/layouts/{$layout}/entries",
+            ['entries' => $entries, 'user' => $userdata, 'courseid' => $this->course->id, 'isloggedin' => $isloggedin]);
 
         return $data;
     }
