@@ -21,4 +21,10 @@ class renderer extends plugin_renderer_base {
 
         return $this->render_from_template("mod_portfoliobuilder/portfolio", $data);
     }
+
+    public function render_group(renderable $page) {
+        $data = $page->export_for_template($this);
+
+        return $this->render_from_template("mod_portfoliogroup/portfolio", $data);
+    }
 }
