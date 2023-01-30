@@ -11,9 +11,10 @@ use mod_portfoliobuilder\util\user;
 use mod_portfoliobuilder\util\entry;
 
 /**
- * Marketplace renderable class.
+ * Index renderable class.
  *
- * @copyright   2022 World Bank Group <https://worldbank.org>
+ * @package     local_portfoliobuilder
+ * @copyright   2023 World Bank Group <https://worldbank.org>
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
 class index implements renderable, templatable {

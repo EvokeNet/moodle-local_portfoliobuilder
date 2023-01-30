@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Prints user's public portfolio page.
+ * Prints group public portfolio page.
  *
- * @package     mod_portfoliogroup
+ * @package     local_portfoliobuilder
  * @copyright   2023 World Bank Group <https://worldbank.org>
  * @author      Willian Mano <willianmanoaraujo@gmail.com>
  */
